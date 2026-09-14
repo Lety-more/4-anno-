@@ -1,0 +1,36 @@
+class Atomo:
+    def __init__(self, simbolo, numero_atomico, massa):
+        self.simbolo = simbolo
+        if numero_atomico < 0:
+            raise ValueError("il numero atomico deve essere sempre positivo")
+        else:
+            self.numero_atomico = numero_atomico
+        self.massa = massa
+        
+    def is_stabile(self):
+        if self.numero_atomico > 83:
+            return False
+            
+        A = round(self.massa)
+        
+        neutroni = A - self.numero_atomico
+        
+        if self.numero_atomico == 1 and neutroni == 0:
+            return True
+            
+        rapporto = neutroni / self.numero_atomico
+        
+        if self.numero_atomico <= 20:
+            return 1.0 <= rapporto <= 1.1
+        else:
+            return 1.1 < rapporto <= 1.54
+
+idrogeno = Atomo("H", 1, 1.008)
+try:
+    ferro = Atomo("Fe", 26, 55.845)
+    
+    print(f"L'atomo {idrogeno.simbolo} è stabile? {idrogeno.is_stabile()}")
+    print(f"L'atomo {ferro.simbolo} è stabile? {ferro.is_stabile()}")
+    
+except ValueError:
+    print("il numero atomico deve essere sempre positivo")
