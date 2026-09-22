@@ -32,7 +32,18 @@ class Atomo:
         dato2=input("inserisci la nuova orbitale: ")
         self.orbile= dato2
         print(f"nuova massa: {self.orbile}")
-        
+    
+    def gas_nobile(self):
+        numeri_gas = [2, 10, 18, 36, 54, 86, 118]
+        for numero in numeri_gas:
+            if numero == self.numero_atomico:
+                return True
+        #if self.numero_atomico in numeri_gas:
+         #   return True
+        # o
+        #if self.numero_atomico == 2 or numero_ .......:
+        #    return True
+         
         
 idrogeno = Atomo("H",1,1.008)
 idrogeno.is_stabile()
@@ -40,8 +51,9 @@ idrogeno.is_stabile()
 print(idrogeno.simbolo)
 #per ccedere daal esteno ad un atruburo privato devo utilizare un metodo 
 print(idrogeno.print_orbitale())
-idrogeno.new_massa()
-idrogeno.new_orbitale()
+#idrogeno.new_massa()
+#idrogeno.new_orbitale()
+idrogeno.gas_nobile() # manca una parte 
 try:
     ferro = Atomo("Fe",26,55.845)
 except ValueError:
